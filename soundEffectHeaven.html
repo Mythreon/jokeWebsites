@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Sound Effects</title>
+    <style>
+        body {
+            background-color: black;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .message {
+            position: absolute;
+            bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            z-index: 10;
+        }
+
+        .start-button {
+            background-color: #00b3b3;
+            color: white;
+            padding: 15px 30px;
+            font-size: 20px;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .start-button:hover {
+            background-color: #007b7b;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="message">Click the button to start random sound effects!</div>
+    <button class="start-button" id="startButton">Start Sounds</button>
+
+    <script>
+        // Expanded array of sound effect URLs
+        const soundEffects = [
+            'https://www.soundjay.com/button/beep-07.wav', // Beep sound
+            'https://www.soundjay.com/button/beep-01a.wav', // Short beep
+            'https://www.soundjay.com/button/beep-09.wav', // Longer beep
+            'https://www.soundjay.com/button/beep-10.wav', // Another beep
+            'https://www.soundjay.com/button/beep-11.wav', // High-pitched beep
+            'https://www.soundjay.com/button/confirm-01.wav', // Confirmation sound
+            'https://www.soundjay.com/button/confirm-02.wav', // Confirmation sound 2
+            'https://www.soundjay.com/button/stop-01.wav', // Stop sound
+            'https://www.soundjay.com/button/click-04.wav', // Click sound
+            'https://www.soundjay.com/button/click-05.wav', // Another click sound
+            'https://www.soundjay.com/button/coin-01.wav', // Coin sound
+            'https://www.soundjay.com/button/ping-01.wav', // Ping sound
+            'https://www.soundjay.com/button/ping-02.wav', // Another ping sound
+            'https://www.soundjay.com/button/success-01.wav', // Success sound
+            'https://www.soundjay.com/button/error-01.wav', // Error sound
+            'https://www.soundjay.com/button/error-02.wav', // Another error sound
+            'https://www.soundjay.com/button/warning-01.wav', // Warning sound
+            'https://www.soundjay.com/button/ding-02.wav', // Ding sound
+            'https://www.soundjay.com/button/alert-01.wav', // Alert sound
+            'https://www.soundjay.com/button/alert-02.wav', // Another alert sound
+            'https://www.soundjay.com/button/tick-01.wav', // Tick sound
+            'https://www.soundjay.com/button/whistle-01.wav', // Whistle sound
+            'https://www.soundjay.com/button/click-01.wav', // Simple click sound
+            'https://www.soundjay.com/button/click-02.wav', // Another click sound
+            'https://www.soundjay.com/button/notification-01.wav', // Notification sound
+            'https://www.soundjay.com/button/error-03.wav', // Error sound 3
+            'https://www.soundjay.com/button/fail-01.wav', // Fail sound
+            'https://www.soundjay.com/button/success-02.wav', // Another success sound
+            'https://www.soundjay.com/button/click-06.wav', // Click sound 3
+            'https://www.soundjay.com/button/lock-01.wav', // Lock sound
+            'https://www.soundjay.com/button/lock-02.wav', // Another lock sound
+            'https://www.soundjay.com/button/open-01.wav', // Open sound
+            'https://www.soundjay.com/button/open-02.wav', // Another open sound
+            'https://www.soundjay.com/button/alert-03.wav', // Alert sound 3
+            'https://www.soundjay.com/button/yes-01.wav', // Yes sound
+            'https://www.soundjay.com/button/no-01.wav', // No sound
+            'https://www.soundjay.com/button/pop-01.wav', // Pop sound
+            'https://www.soundjay.com/button/switch-01.wav', // Switch sound
+            'https://www.soundjay.com/button/ding-03.wav', // Ding 3 sound
+            'https://www.soundjay.com/button/confirm-03.wav', // Confirmation 3
+            'https://www.soundjay.com/button/receive-01.wav', // Receive sound
+            'https://www.soundjay.com/button/signal-01.wav', // Signal sound
+            'https://www.soundjay.com/button/signal-02.wav', // Another signal sound
+            'https://www.soundjay.com/button/alert-04.wav', // Alert sound 4
+            'https://www.soundjay.com/button/bell-01.wav', // Bell sound
+            'https://www.soundjay.com/button/beep-08.wav', // Beep 8 sound
+            'https://www.soundjay.com/button/tap-01.wav', // Tap sound
+            'https://www.soundjay.com/button/tap-02.wav', // Another tap sound
+            'https://www.soundjay.com/button/whistle-02.wav', // Whistle 2
+            'https://www.soundjay.com/button/phone-01.wav', // Phone sound
+            'https://www.soundjay.com/button/phone-02.wav', // Another phone sound
+            'https://www.soundjay.com/button/phone-03.wav', // Phone 3 sound
+            'https://www.soundjay.com/button/doorbell-01.wav', // Doorbell sound
+            'https://www.soundjay.com/button/doorbell-02.wav', // Another doorbell sound
+            'https://www.soundjay.com/button/chime-01.wav', // Chime sound
+            'https://www.soundjay.com/button/chime-02.wav', // Another chime sound
+            'https://www.soundjay.com/button/chime-03.wav', // Chime 3 sound
+            'https://www.soundjay.com/button/chime-04.wav', // Chime 4 sound
+            'https://www.soundjay.com/button/beep-02.wav', // Beep sound 2
+            'https://www.soundjay.com/button/boop-01.wav', // Boop sound
+            'https://www.soundjay.com/button/zap-01.wav', // Zap sound
+            'https://www.soundjay.com/button/swoosh-01.wav', // Swoosh sound
+            'https://www.soundjay.com/button/ding-01.wav', // Ding sound
+            'https://www.soundjay.com/button/buzz-01.wav', // Buzz sound
+            'https://www.soundjay.com/button/slide-01.wav', // Slide sound
+            'https://www.soundjay.com/button/bubble-01.wav', // Bubble sound
+            'https://www.soundjay.com/button/alert-05.wav', // Alert 5 sound
+            'https://www.soundjay.com/button/laser-01.wav', // Laser sound
+            'https://www.soundjay.com/button/laser-02.wav', // Another laser sound
+            'https://www.soundjay.com/button/whoosh-01.wav', // Whoosh sound
+            'https://www.soundjay.com/button/whoosh-02.wav', // Another whoosh sound
+            'https://www.soundjay.com/button/fan-01.wav', // Fan sound
+            'https://www.soundjay.com/button/machine-01.wav', // Machine sound
+            'https://www.soundjay.com/button/whirr-01.wav', // Whirr sound
+            'https://www.soundjay.com/button/whirr-02.wav', // Another whirr sound
+            'https://www.soundjay.com/button/pop-02.wav', // Pop sound 2
+            'https://www.soundjay.com/button/air-01.wav', // Air sound
+            'https://www.soundjay.com/button/dog-01.wav', // Dog bark sound
+            'https://www.soundjay.com/button/cat-01.wav' // Cat meow sound
+        ];
+
+        function playRandomSound() {
+            const randomSoundUrl = soundEffects[Math.floor(Math.random() * soundEffects.length)];
+            const sound = new Audio(randomSoundUrl);
+            sound.play();
+        }
+
+        function startPlayingSounds() {
+            setInterval(() => {
+                const randomInterval = Math.random() * (1 - 0.2) + 0.2; 
+                setTimeout(playRandomSound, randomInterval * 1000);
+            }, 100); 
+        }
+
+        document.getElementById('startButton').addEventListener('click', () => {
+            document.getElementById('startButton').style.display = 'none';
+            startPlayingSounds();
+        });
+    </script>
+
+</body>
+</html>
