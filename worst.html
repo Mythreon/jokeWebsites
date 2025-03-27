@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Chaos Website</title>
+    <!-- This website is a joke!-->
+    <style>
+        body {
+            background-color: neonpink;
+            color: limegreen;
+            font-family: 'Comic Sans MS', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            animation: backgroundColor 1s infinite alternate;
+            cursor: url('https://upload.wikimedia.org/wikipedia/commons/6/6b/Curious_Heart_mouse_pointer.svg'), auto;
+        }
+
+        @keyframes backgroundColor {
+            0% { background-color: neonpink; }
+            25% { background-color: yellow; }
+            50% { background-color: limegreen; }
+            75% { background-color: orange; }
+            100% { background-color: cyan; }
+        }
+
+        h1, h2 {
+            text-align: center;
+            animation: bounce 2s infinite;
+            color: red;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-30px);
+            }
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding-top: 20%;
+            font-size: 25px;
+        }
+
+        .popup button {
+            font-size: 20px;
+            padding: 10px 20px;
+            background-color: yellow;
+            border: none;
+            cursor: pointer;
+            color: red;
+            transition: background-color 0.3s;
+        }
+
+        .popup button:hover {
+            background-color: orange;
+        }
+
+        .pop-up-trigger {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 20px;
+            background-color: yellow;
+            padding: 5px;
+            cursor: pointer;
+            color: red;
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: yellow;
+            z-index: 10;
+            padding: 15px;
+            animation: navShake 0.5s infinite alternate;
+        }
+
+        @keyframes navShake {
+            0% { transform: rotate(5deg); }
+            50% { transform: rotate(-5deg); }
+            100% { transform: rotate(5deg); }
+        }
+
+        .nav a {
+            color: red;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 20px;
+            text-transform: uppercase;
+        }
+
+        .nav a:hover {
+            color: limegreen;
+        }
+
+        .broken-link {
+            color: blue;
+            text-decoration: underline;
+        }
+
+        .stock-photo {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            animation: zoomInOut 5s infinite;
+        }
+
+        @keyframes zoomInOut {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.5);
+            }
+        }
+
+        .flashing-text {
+            color: orange;
+            font-size: 25px;
+            animation: flashText 0.5s infinite alternate;
+            text-align: center;
+        }
+
+        @keyframes flashText {
+            0% { color: limegreen; font-size: 25px; }
+            25% { color: yellow; font-size: 35px; }
+            50% { color: red; font-size: 45px; }
+            75% { color: cyan; font-size: 30px; }
+            100% { color: pink; font-size: 40px; }
+        }
+
+        .scrolling-text {
+            position: absolute;
+            bottom: 0;
+            font-size: 25px;
+            color: red;
+            animation: scrollText 10s linear infinite;
+        }
+
+        @keyframes scrollText {
+            0% { top: 100%; }
+            100% { top: -100%; }
+        }
+
+        .input-form {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 5;
+            font-size: 20px;
+        }
+
+        .form-input {
+            width: 200px;
+            padding: 10px;
+            font-size: 18px;
+            margin: 10px;
+            background-color: limegreen;
+            color: pink;
+            border: 2px solid yellow;
+            animation: shake 0.5s infinite alternate;
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(5px); }
+            100% { transform: translateX(-5px); }
+        }
+
+        .broken-nav {
+            margin: 20px;
+            font-size: 25px;
+            color: red;
+            text-decoration: none;
+            animation: blinkText 1s infinite;
+        }
+
+        @keyframes blinkText {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .hidden-images img {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: hideShowImages 1s infinite alternate;
+        }
+
+        @keyframes hideShowImages {
+            0% { opacity: 0; top: 100%; }
+            50% { opacity: 1; top: 50%; }
+            100% { opacity: 0; top: 0%; }
+        }
+
+        .invisible-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100px;
+            height: 100px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            animation: invisibleClick 1s infinite;
+        }
+
+        @keyframes invisibleClick {
+            0% { opacity: 0.5; }
+            50% { opacity: 0.1; }
+            100% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Audio chaos -->
+    <audio id="audio1" autoplay loop preload="auto">
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3" type="audio/mp3">
+    </audio>
+    <audio id="audio2" autoplay loop preload="auto">
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mp3">
+    </audio>
+    <audio id="audio3" autoplay loop preload="auto">
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3" type="audio/mp3">
+    </audio>
+
+    <div class="popup" id="popup">
+        <h2>Congratulations! You've won a FREE prize!</h2>
+        <button onclick="closePopup()">Claim Now!</button>
+    </div>
+
+    <div class="pop-up-trigger" onclick="showPopup()">Click me for a surprise!</div>
+
+    <div class="nav">
+        <a href="https://www.fake-link.com">Link 1</a>
+        <a href="https://www.another-fake-link.com">Link 2</a>
+        <a href="https://www.yet-another-fake-link.com">Link 3</a>
+        <a href="#" class="broken-nav">Broken Link</a>
+    </div>
+
+    <h1>Welcome to the Worst Website Ever</h1>
+
+    <div>
+        <img class="stock-photo" src="https://www.w3schools.com/w3images/lights.jpg" alt="Stock Image">
+    </div>
+
+    <div>
+        <p><a href="https://www.this-is-a-broken-link.com" class="broken-link">Broken Link</a></p>
+        <p><a href="https://www.also-a-broken-link.com" class="broken-link">Another Broken Link</a></p>
+    </div>
+
+    <div class="scrolling-text">
+        <p>This is random scrolling text that never stops.</p>
+    </div>
+
+    <div class="input-form">
+        <input type="text" class="form-input" placeholder="Type something...">
+        <input type="text" class="form-input" placeholder="More useless input...">
+    </div>
+
+    <div class="hidden-images">
+        <img src="https://www.w3schools.com/w3images/lights.jpg" alt="Hidden Image 1">
+        <img src="https://www.w3schools.com/w3images/fjords.jpg" alt="Hidden Image 2">
+    </div>
+
+    <button class="invisible-button" onclick="alert('You clicked the invisible button!')"></button>
+
+    <script>
+        function showPopup() {
+            document.getElementById("popup").style.display = "block";
+        }
+
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
+        }
+
+        setInterval(function() {
+            alert("You've been randomly selected for a prize!");
+        }, 22000); 
+
+        window.onload = function() {
+            document.body.style.animation = 'scroll 1s infinite';
+        };
+    </script>
+
+</body>
+</html>
