@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Compliment Generator</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            color: #333;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            background-color: #4caf50;
+            color: white;
+            font-size: 18px;
+            padding: 15px 30px;
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        .compliment {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px;
+        }
+
+        .mean-comment-button {
+            background-color: #f44336;
+        }
+
+        .mean-comment-button:hover {
+            background-color: #e53935;
+        }
+    </style>
+</head>
+<body>
+    <h1>Random Compliment Generator</h1>
+    <div class="compliment" id="compliment">You are amazing!</div>
+    <button class="button" id="complimentButton">Get Compliment</button>
+    <button class="button mean-comment-button" id="meanButton">Get Mean Comment</button>
+
+    <script>
+        const compliments = [
+            "You have the confidence of a cactus in the desert.",
+            "Your eyes are like Google, they find everything.",
+            "You light up every room you walk into.",
+            "You are the human equivalent of a warm cup of tea.",
+            "Your sense of humor is contagious, in the best way.",
+            "You're like a walking hug.",
+            "Your energy is magnetic, like a rare superpower.",
+            "You have the best laugh in the world.",
+            "If you were a vegetable, you'd be a cutecumber.",
+            "You're like a unicorn in a field of horses."
+        ];
+
+        const meanComments = [
+            "You probably don’t even like chocolate, huh?",
+            "Nice hair, did you borrow it from a mop?",
+            "You're like a phone with no signal – a little useless.",
+            "You’ve got the kind of charm that could empty a room.",
+            "I bet you’re the type who reads the terms and conditions.",
+            "Your sense of style is as bold as a potato.",
+            "You should give motivational speeches – but for cats.",
+            "If laziness was an Olympic sport, you'd win gold.",
+            "Your face is like a masterpiece – it needs a little work.",
+            "You're like a cloud – when you disappear, it gets better.",
+            "You’re like a human version of a ‘404 not found’ error.",
+            "You look like you’ve seen a ghost. Actually, you look like you are one.",
+            "I can’t believe it took me this long to realize you are the reason they have warning labels on things.",
+            "Are you still trying to be relevant, or is that just a part of your personality?",
+            "You must have been a ‘before’ picture in an ad for an extreme makeover.",
+            "You’re like a software update – inconvenient and unnecessary.",
+            "You don’t need a cape to be a superhero; you just need a better wardrobe.",
+            "You’re like an IKEA instruction manual – confusing and slightly frustrating.",
+            "Your jokes are like bad Wi-Fi – they just don’t connect.",
+            "You have the personality of a piece of cardboard.",
+            "You remind me of a refrigerator – you look nice, but no one cares about you unless something goes wrong.",
+            "If procrastination were a sport, you’d have won gold… but probably just in theory.",
+            "You’re the human equivalent of an empty coffee cup.",
+            "I’d agree with you, but then we’d both be wrong.",
+            "You’re like a puzzle piece that doesn’t fit anywhere.",
+            "I don’t know what’s more disappointing, your jokes or your fashion sense.",
+            "You’re like a Google search gone wrong. You’re the result I didn’t want.",
+            "You’re like a phone that’s always on silent – never helpful when I need you.",
+            "Is your personality factory-installed, or did you have to download it?",
+            "You might just be the reason they have an ‘undo’ button in life.",
+            "You're like an out-of-service vending machine – just disappointing.",
+            "You’re like a dictionary – full of words but still hard to understand.",
+            "You’re like a cupcake without frosting – just kind of plain.",
+            "Are you sure you're not a Wi-Fi router? Because you’re always disconnecting.",
+            "You're the reason we need to remind people not to touch the stove.",
+            "If you were any more boring, you’d be the manual for an electric toothbrush.",
+            "If life was a video game, you’d be the loading screen.",
+            "You have all the charm of a soggy toast.",
+            "Are you trying to be funny, or are you just on auto-pilot?",
+            "You remind me of a refrigerator light – no matter what, you don’t shine.",
+            "You have all the personality of a wet blanket.",
+            "Are you trying to be a meme, or are you just naturally cringey?",
+            "You’re like a cloud on a sunny day – totally out of place.",
+            "You’re like a pineapple without the crown – not the smartest fruit in the basket.",
+            "You're a human bookmark: everyone ignores you until they need something.",
+            "You’re like an Instagram filter – completely fake.",
+            "You remind me of the low battery warning on my phone – always around at the wrong time.",
+            "Are you trying to be a comedy legend, or is this just your natural talent?",
+            "You're the person who adds extra sugar to your coffee and still says it's too bitter.",
+            "Your humor is like a rock – it's not moving anywhere.",
+            "You’re the human equivalent of a ‘skip intro’ button.",
+            "If sarcasm was an Olympic event, you'd be a gold medalist, but only in your own mind.",
+            "You’re like a broken pencil – pointless.",
+            "I’ve seen more life in a cabbage than in your personality.",
+            "If ‘boring’ was an art form, you’d be Picasso.",
+            "You’re like an expired coupon – completely useless.",
+            "You’re the kind of person who waits for the elevator to come down, but you’re already on the ground floor.",
+            "If I had a dollar for every time you said something funny, I’d still be broke.",
+            "You must be the reason we have a ‘skip intro’ button on Netflix.",
+            "You're a real-life autocorrect fail.",
+            "Your sense of direction is probably as bad as your sense of humor.",
+            "You’re about as useful as a screen door on a submarine.",
+            "You should really consider being more invisible – it suits you.",
+            "You’d make a great motivational speaker… for sloths.",
+            "Your sense of humor is like a cold cup of coffee – it just doesn’t work.",
+            "If laziness were an art, you’d be the Mona Lisa.",
+            "You're like a broken clock – right twice a day but still mostly useless.",
+            "You're the type of person who holds a door open for someone and then waits for them to thank you.",
+            "You remind me of a pen with no ink – nice to look at but not helpful.",
+            "You’re like a song stuck on repeat – annoying after a while.",
+            "You're like a pencil without a sharpener – dull and unremarkable.",
+            "You have all the excitement of a cardboard box.",
+            "You must be the reason they invented the ‘mute’ button.",
+            "You’re like a voicemail message that no one listens to.",
+            "If nothing ever changed, you’d still be stuck in the past.",
+            "You're the kind of person who makes introverts look outgoing.",
+            "Your personality is like a dial-up connection – very slow and outdated."
+        ];
+
+        let isMeanComment = false;
+
+        function getCompliment() {
+            const randomCompliment = compliments[Math.floor(Math.random() * compliments.length)];
+            document.getElementById('compliment').textContent = randomCompliment;
+        }
+
+        function getMeanComment() {
+            const randomMeanComment = meanComments[Math.floor(Math.random() * meanComments.length)];
+            document.getElementById('compliment').textContent = randomMeanComment;
+        }
+
+        document.getElementById('complimentButton').addEventListener('click', function() {
+            if (isMeanComment) {
+                getMeanComment();
+            } else {
+                getCompliment();
+            }
+        });
+
+        document.getElementById('meanButton').addEventListener('click', function() {
+            isMeanComment = !isMeanComment;
+            const buttonText = isMeanComment ? "Switch to Compliment" : "Get Mean Comment";
+            document.getElementById('meanButton').textContent = buttonText;
+        });
+
+        getCompliment();
+    </script>
+</body>
+</html>
