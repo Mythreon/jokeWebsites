@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Swedish Word</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Background & Layout */
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #222222;
+            color: #eeeeee;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-size: 1.2em;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Main Container */
+        .container {
+            background: #444;
+            border: 5px solid #888;
+            padding: 30px;
+            width: 350px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            background-image: url('https://www.transparenttextures.com/patterns/dirty-paper.png');
+            background-size: 100%;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 2em;
+            color: #ffcc00;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.5em;
+            color: #f1f1f1;
+            margin-top: 20px;
+        }
+
+        /* Button */
+        button {
+            background-color: #ff6600;
+            color: white;
+            font-size: 1.2em;
+            padding: 10px 25px;
+            border: none;
+            cursor: pointer;
+            margin-top: 30px;
+            border-radius: 5px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+            transition: background-color 0.2s ease-in-out, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #cc5200;
+            transform: scale(1.05);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        /* Rough Edge Effect on Box */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 5px solid #888;
+            transform: rotate(3deg);
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Random Swedish Word</h1>
+        <p id="wordDisplay">Press the button to get a random Swedish word!</p>
+        <button id="randomButton">Get Random Word</button>
+    </div>
+
+    <script>
+        const swedishWords = [
+            "hej, hello",
+            "Sverige, Sweden",
+            "musik, music",
+            "palats, palace",
+            "hus, house",
+            "lagra, store",
+            "lista, list",
+            "bastu, sauna",
+            "guld, gold",
+            "vägg, wall",
+            "jobb, job",
+            
+        ];
+
+        function getRandomWord() {
+            const randomIndex = Math.floor(Math.random() * swedishWords.length);
+            document.getElementById("wordDisplay").textContent = swedishWords[randomIndex];
+        }
+
+        document.getElementById("randomButton").addEventListener("click", getRandomWord);
+    </script>
+</body>
+</html>
