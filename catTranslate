@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat Translator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h1 {
+            font-size: 2em;
+            color: #333;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        p {
+            font-size: 1.1em;
+            margin-top: 20px;
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            font-size: 1.2em;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+
+        button {
+            background-color: #ffcc00;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            font-size: 1.2em;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #ff9900;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f3f3f3;
+            border: 2px dashed #ccc;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #333;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Cat Translator</h1>
+        <p>Type a sentence and let the cats speak for you!</p>
+        
+        <input type="text" id="userInput" placeholder="Type your sentence here...">
+        <button onclick="translateToCat()">Translate to Cat</button>
+
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function translateToCat() {
+            const userInput = document.getElementById('userInput').value;
+            if (!userInput) {
+                document.getElementById('result').textContent = "Please type something for the cat to translate!";
+                return;
+            }
+            
+            const catPhrases = [
+                "Meow meow, purrrr!", 
+                "Hissss, I demand tuna!", 
+                "Mew mew, feed me now!", 
+                "Mrrrow, what's that noise?", 
+                "Purr... I like it.", 
+                "Meowww, give me belly rubs!",
+                "Mrrrrrr... don't touch my tail!", 
+                "Hisss... I'm grumpy today.", 
+                "Prrrrrrr, I'm the king of this house!",
+                "Mew! Where's my toy mouse?"
+            ];
+            
+            const randomCatPhrase = catPhrases[Math.floor(Math.random() * catPhrases.length)];
+
+            document.getElementById('result').textContent = `Cat Translation: "${randomCatPhrase}"`;
+        }
+    </script>
+</body>
+</html>
