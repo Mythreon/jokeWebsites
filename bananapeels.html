@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banana Peel Slips</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f7f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+
+        .container {
+            background-color: #ffeb3b;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        p {
+            font-size: 1.5em;
+            color: #555;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #ff9800;
+            color: white;
+            padding: 15px 25px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            transition: background-color 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #f57c00;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        #result {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #333;
+            background-color: #fff3e0;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Banana Peel Slips</h1>
+        <p>Click the button to slip on a banana peel and experience the unexpected!</p>
+        
+        <button onclick="slipOnBananaPeel()">Slip on the Banana Peel!</button>
+
+        <div id="result"></div>
+    </div>
+
+    <script>
+        const slipOutcomes = [
+            "You slip and land in a pool of whipped cream. It's surprisingly comfy.",
+            "You slip and get teleported to the moon, but the gravity is just right to enjoy a slow-motion tumble.",
+            "You slip and fall into an alternate dimension where everyone's a penguin.",
+            "You slip and accidentally break the fourth wall. The universe is confused.",
+            "You slip and find yourself in a massive pillow fight with angry ducks.",
+            "You slip and fall into a huge pile of freshly baked cookies. It’s delicious!",
+            "You slip and your shoes fly off into orbit. They're probably lost forever.",
+            "You slip and land in a cloud of glitter. Now you're a walking disco ball.",
+            "You slip and fall into a giant pile of spaghetti. It's a good thing you're hungry.",
+            "You slip and fall straight into a parallel universe where cats rule the world."
+        ];
+
+        function slipOnBananaPeel() {
+            const randomOutcome = slipOutcomes[Math.floor(Math.random() * slipOutcomes.length)];
+            document.getElementById('result').textContent = randomOutcome;
+        }
+    </script>
+
+</body>
+</html>
